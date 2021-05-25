@@ -12,8 +12,8 @@ class FrameworkCollector extends EventsCollector
             $this->initHttpTracer($this->app['request']);
         }
         // Application and Laravel startup times
-        $startTime = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
-        $this->addSegment('composer autoload', $startTime);
+        //$startTime = defined('LARAVEL_START') ? LARAVEL_START : microtime(true);
+        $this->addSegment('composer autoload');
 
         $this->app->booting(function () {
             $this->addSegment('laravel boot');
