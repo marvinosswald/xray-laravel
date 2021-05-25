@@ -120,6 +120,9 @@ class SegmentCollector
 
     public function submitHttpTracer($response): void
     {
+        //end those segments incase booting xor booted events didn't fire
+        $this->endSegment('composer autoload');
+        $this->endSegment('laravel boot');
         $submitterClass = config('xray.submitter');
         $tracer = $this->tracer();
 
